@@ -47,7 +47,7 @@ UPI_F/
 
 1.  **Clone the Repository**
     ```bash
-    git clone [https://github.com/yourusername/upi-fraud-detection.git](https://github.com/veereshakm/UPI-Shield)
+    git clone https://github.com/veereshakm/UPI-Shield
     cd upi-fraud-detection
     ```
 
