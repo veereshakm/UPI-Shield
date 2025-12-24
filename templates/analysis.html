@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="glass-card" style="position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <div
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.05; background-image: url('{{ url_for('static', filename='images/hero_image.png') }}'); background-size: cover; background-position: center;">
+    </div>
+
+    <h2 style="margin-bottom: 2rem;">System Analysis & Performance</h2>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        <div>
+            <h3>Algorithm Performance</h3>
+            <div
+                style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0.5rem; height: 300px; display: flex; align-items: center; justify-content: center;">
+                <!-- Placeholder for Chart -->
+                <p>Chart: Algorithm Accuracy Comparison</p>
+            </div>
+            <ul style="margin-top: 1rem; list-style: none; padding: 0;">
+                <li
+                    style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <span>Logistic Regression</span> <span>~80%</span>
+                </li>
+                <li
+                    style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <span>KNN</span> <span>~83%</span>
+                </li>
+                <li
+                    style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <span>Decision Tree</span> <span>~94.7%</span>
+                </li>
+                <li
+                    style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--secondary-color); font-weight: bold;">
+                    <span>Proposed CNN</span> <span>99.5%</span>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Fraud Statistics</h3>
+            <div
+                style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0.5rem; height: 300px; display: flex; align-items: center; justify-content: center;">
+                <!-- Placeholder for Chart -->
+                <p>Chart: Fraud vs Valid Distribution</p>
+            </div>
+            <div style="margin-top: 1rem;">
+                <p><strong>Dataset Insights:</strong></p>
+                <p>Approximately 31% of transactions in the sample dataset were identified as fraudulent.</p>
+                <p><strong>High Risk Categories:</strong></p>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li>Free Money Stacking</li>
+                    <li>Investment Schemes</li>
+                    <li>Fake Job Openings</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

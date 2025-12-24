@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero" style="text-align: center; padding: 4rem 0; position: relative;">
+    <div
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.1; background-image: url('{{ url_for('static', filename='images/hero_image.png') }}'); background-size: cover; background-position: center;">
+    </div>
+
+    <img src="{{ url_for('static', filename='images/upi_logos.png') }}" alt="UPI Apps"
+        style="max-width: 300px; margin-bottom: 2rem; filter: drop-shadow(0 0 10px rgba(79, 70, 229, 0.5));">
+
+    <h1
+        style="font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(to right, #818cf8, #4f46e5); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        Secure Your Transactions</h1>
+    <p style="font-size: 1.25rem; color: #cbd5e1; max-width: 600px; margin: 0 auto 2rem;">
+        Advanced AI-powered fraud detection for UPI payments. Protect yourself from malicious sellers and fraudulent
+        schemes with real-time analysis.
+    </p>
+    <div style="display: flex; justify-content: center; gap: 1rem;">
+        <a href="{{ url_for('predict') }}"><button style="font-size: 1.1rem; padding: 1rem 2rem;">Check
+                Transaction</button></a>
+        <a href="{{ url_for('login') }}"><button
+                style="background-color: transparent; border: 1px solid var(--primary-color);">Admin Login</button></a>
+    </div>
+</div>
+
+<div class="features"
+    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 4rem;">
+    <div class="glass-card">
+        <h3>Real-time Detection</h3>
+        <p>Instantly analyze transaction details to identify potential fraud before it happens.</p>
+    </div>
+    <div class="glass-card">
+        <h3>Deep Learning</h3>
+        <p>Powered by a Convolutional Neural Network (CNN) with 99.5% accuracy.</p>
+    </div>
+    <div class="glass-card">
+        <h3>Comprehensive Analysis</h3>
+        <p>Evaluates time, location, user behavior, and seller categories.</p>
+    </div>
+</div>
+{% endblock %}

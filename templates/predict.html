@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="glass-card" style="max-width: 800px; margin: 0 auto; position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <div
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.05; background-image: url('{{ url_for('static', filename='images/hero_image.png') }}'); background-size: cover; background-position: center;">
+    </div>
+
+    <h2 style="text-align: center; margin-bottom: 2rem;">Transaction Fraud Check</h2>
+
+    <form action="{{ url_for('predict') }}" method="POST"
+        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+        <!-- UPI Details -->
+        <div style="grid-column: 1 / -1;">
+            <h3
+                style="font-size: 1.1rem; color: var(--secondary-color); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                UPI Information</h3>
+        </div>
+        <div>
+            <label>UPI Number</label>
+            <input type="text" name="upi_number" required
+                style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #ccc; background: rgba(255,255,255,0.1); color: white; margin-top: 0.5rem;">
+        </div>
+        <div>
+            <label>Holder Name</label>
+            <input type="text" name="holder_name" required
+                style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #ccc; background: rgba(255,255,255,0.1); color: white; margin-top: 0.5rem;">
+        </div>
+
+        <!-- Personal Info -->
+        <div style="grid-column: 1 / -1;">
+            <h3
+                style="font-size: 1.1rem; color: var(--secondary-color); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                Personal Details</h3>
+        </div>
+        <div>
+            <label>Date of Birth</label>
+            <input type="date" name="dob" required
+                style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #ccc; background: rgba(255,255,255,0.1); color: white; margin-top: 0.5rem;">
+        </div>
+        <div>
+            <label>Zip Code</label>
+            <input type="text" name="zip_code" required
+                style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #ccc; background: rgba(255,255,255,0.1); color: white; margin-top: 0.5rem;">
+        </div>
+
+        <!-- Transaction Info -->
+        <div style="grid-column: 1 / -1;">
+            <h3
+                style="font-size: 1.1rem; color: var(--secondary-color); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                Transaction Details</h3>
+        </div>
+        <div>
+            <label>Amount</label>
+            <input type="number" name="amount" step="0.01" required
+                style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #ccc; background: rgba(255,255,255,0.1); color: white; margin-top: 0.5rem;">
+        </div>
+        <div>
+            <label>Category</label>
+            <select name="category" required
+                style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #ccc; background: rgba(255,255,255,0.1); color: white; margin-top: 0.5rem;">
+                <option value="0">Entertainment</option>
+                <option value="1">Food & Dining</option>
+                <option value="10">Health & Fitness</option>
+                <option value="11">Shopping</option>
+                <option value="12">Travel</option>
+            </select>
+        </div>
+        <div>
+            <label>Time (Hour)</label>
+            <input type="number" name="hour" min="0" max="23" required
+                style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #ccc; background: rgba(255,255,255,0.1); color: white; margin-top: 0.5rem;">
+        </div>
+
+        <div style="grid-column: 1 / -1; margin-top: 1rem;">
+            <button type="submit" style="width: 100%; padding: 1rem; font-size: 1.1rem;">Detect Fraud</button>
+        </div>
+    </form>
+
+    {% if prediction %}
+    <div
+        style="margin-top: 2rem; padding: 1.5rem; border-radius: 0.5rem; text-align: center; background: {% if 'Error' in prediction %}rgba(239, 68, 68, 0.2){% elif prediction == 'Fraud' %}rgba(239, 68, 68, 0.2){% else %}rgba(34, 197, 94, 0.2){% endif %}; border: 1px solid {% if 'Error' in prediction or prediction == 'Fraud' %}#ef4444{% else %}#22c55e{% endif %};">
+        <h3
+            style="color: {% if 'Error' in prediction or prediction == 'Fraud' %}#fca5a5{% else %}#86efac{% endif %}; margin: 0;">
+            {% if 'Error' in prediction %}
+            {{ prediction }}
+            {% else %}
+            Result: {{ prediction }} Transaction
+            {% endif %}
+        </h3>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
