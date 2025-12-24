@@ -73,6 +73,19 @@ UPI_F/
 5.  **Access the App**
     Open your browser and navigate to `http://127.0.0.1:5000`.
 
+## ☁️ Streamlit Cloud Deployment
+
+If you prefer to host on **Streamlit Cloud**, use the `streamlit_app.py` file instead of `app.py`.
+
+1.  **Run Locally**:
+    ```bash
+    streamlit run streamlit_app.py
+    ```
+2.  **Deploy**:
+    - Push your code to GitHub.
+    - Go to [Streamlit Cloud](https://streamlit.io/cloud).
+    - Connect your repo and set the "Main file path" to `streamlit_app.py`.
+
 ## 📖 Usage Guide
 
 1.  **Home**: Overview of the system features.
