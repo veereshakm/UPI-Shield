@@ -81,10 +81,8 @@ If you prefer to host on **Streamlit Cloud**, use the `streamlit_app.py` file in
     ```bash
     streamlit run streamlit_app.py
     ```
-2.  **Deploy**:
-    - Push your code to GitHub.
+2.  **Deployed on Stremlit**:
     - Go to https://upi-shield-x4epalaergpssfirhgzwsh.streamlit.app
-    - Connect your repo and set the "Main file path" to `streamlit_app.py`.
 
 ## 📖 Usage Guide
 
